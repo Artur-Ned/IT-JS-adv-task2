@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classwork</title>
+    <style type="text/css"></style>
+  </head>
+  <body>
+    <style>
+      body {
+        background-color: yellowgreen;
+      }
+      div {
+        font-size: 30px;
+        margin: 20px;
+        color: brown;
+      }
+
+      p {
+        color: green;
+        margin-left: 20px;
+        background-color: darkgrey;
+      }
+    </style>
+    <div id="one">one</div>
+    <p>
+      Добавьте после дива с id=one еще один див с текстом two и id=two <br />
+      На клик по id=two добавьте перед ним див с id - two_first,<br />
+      а див с id=two измените на two_second
+    </p>
+    <script>
+      const divOne = document.querySelector("#one");
+      //   console.log(divOne);
+      divOne.addEventListener("click", addDivTwo);
+
+      function addDivTwo(e) {
+        divOne.insertAdjacentHTML("beforebegin", "<div>two</div>");
+        const divS = document.querySelectorAll("div");
+        const divTwo = divS[0];
+        divTwo.setAttribute("id", "two");
+        const divTwo2 = document.querySelector("#two");
+        divTwo2.addEventListener("click", chanchID);
+        // console.log(divTwo2);
+        // addSelectorId();
+      }
+
+      function chanchID(e) {
+        const divTwo2 = document.querySelector("#two");
+        divTwo2.insertAdjacentHTML("beforebegin", "<div>two_first</div>");
+        const divS = document.querySelectorAll("div");
+        const divTwofirst = divS[0];
+        divTwofirst.setAttribute("id", "two_first");
+        divTwo2.removeAttribute("id");
+        divTwo2.setAttribute("id", "two_second");
+        // const divTwo2 = document.querySelector("#two");
+        // console.log(divTwofirst);
+        // console.log(divTwo2);
+      }
+    </script>
+  </body>
+</html>
